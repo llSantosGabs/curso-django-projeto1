@@ -10,7 +10,7 @@ def home(request):
     #return HTTP Response
 
 def contato(request):
-    return render(request, 'me-apague/temp.html')
+    return render(request, 'recipes/contato.html')
     #return HTTP Response
 
 def sobre(request):
