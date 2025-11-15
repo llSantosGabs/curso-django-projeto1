@@ -16,10 +16,10 @@ def home(request):
 
     })
 
-def category(request, category_id):
+def category(request, category_slug):
     recipes = get_list_or_404(
         Recipe.objects.filter(
-            category__id=category_id,
+            category__slug= category_slug,
             is_published=True,
         ).order_by('-id')
     )
@@ -27,7 +27,8 @@ def category(request, category_id):
     return render(request, './recipes/pages/category.html', context ={
     
         'recipes' : recipes,
-        'title' : f'{recipes[0].category.name} - Category | '
+        'title' : f'{recipes[0].category.name} - Category | ',
+        'is_category_page' : True
     })
 
 
