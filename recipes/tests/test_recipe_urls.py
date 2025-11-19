@@ -1,11 +1,16 @@
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
+from recipes import views
 
 class RecipeUrlsTest(TestCase):
     def test_recipe_home_url_is_correct(self):
         url = reverse('recipes:home')
         self.assertEqual(url, '/')
-class RecipeUrlsTest(TestCase):
+
     def test_recipe_category_url_is_correct(self):
         url = reverse('recipes:category', kwargs={'category_slug':"sobremesas"})
         self.assertEqual(url, '/sobremesas/')
+
+    def test_recipe_detail_url_is_correct(self):
+        url = reverse('recipes:recipe', kwargs={'id':1})
+        self.assertEqual(url, '/recipe/1/')
